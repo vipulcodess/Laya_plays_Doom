@@ -2,6 +2,10 @@
 
 This CLI runs a bounded ViZDoom episode and uses the local [Convai LAYA](https://huggingface.co/convaiinnovations/laya) checkpoint for one structured decision at a time. The built-in adapter calls the documented `laya.load()` and `agent.predict(state, questions)` SDK methods. Inference runs locally; model weights are fetched from Hugging Face the first time the checkpoint is loaded.
 
+## Gameplay recording
+
+[Watch the LAYA Doom gameplay recording](media/LAYA_GAMEPLAY_DOOM.mov) (QuickTime MOV, 16 MB).
+
 ## Important model limitation
 
 The linked LAYA checkpoint is a **text/JSON typed-decision model, not a vision model**. ViZDoom renders the game window; the app enables ViZDoom's structured object/label metadata and sends LAYA visible monster names and their left/center/right screen positions alongside `episode_tic`, `health`, `ammo`, `kills`, and supported actions. It still cannot interpret pixels, walls, or unlabelled visual detail. When a visible monster is to one side and the scenario has a matching control, the adapter only offers actions toward that side. The base checkpoint is not Doom-tuned and may still make poor gameplay decisions. No alternate/remote inference model is used.
