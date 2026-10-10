@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "doom-player-laya"
+version = "0.1.0"
+description = "A bounded ViZDoom player with an explicit local decision-model adapter"
+requires-python = ">=3.10"
+dependencies = [
+  "vizdoom>=1.2.4",
+  "laya>=0.3.20",
+]
+
+[project.scripts]
+doom-player = "doom_player.player:main"
+
+[tool.setuptools.packages.find]
+include = ["doom_player*"]
